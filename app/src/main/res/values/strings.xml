@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AndroidTools</string>
+    <string name="accessibility_description">启动抢红包服务，仅支持微信。</string>
+    <string name="service_name">智能管家</string>
+</resources>
