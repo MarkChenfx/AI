@@ -28,3 +28,4 @@ proguard/
 AndroidTools.iml
 app.iml
 .idea
+/app/build/

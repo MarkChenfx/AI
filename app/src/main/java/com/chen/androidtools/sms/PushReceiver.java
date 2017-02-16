@@ -1,4 +1,4 @@
-package com.chen.androidtools.receiver;
+package com.chen.androidtools.sms;
 
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;

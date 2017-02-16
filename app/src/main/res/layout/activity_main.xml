@@ -1,17 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.chen.androidtools.MainActivity">
+
 
     <TextView
         android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="136dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/wx_view"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/wx"
+            android:layout_width="114dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_centerVertical="true"
+            android:background="@color/gray"
+            android:gravity="center"
+            android:text="@string/hongbao" />
+
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:layout_centerVertical="true"
+            android:id="@+id/switchBtn_wx"
+            android:layout_width="93dp"
+            android:layout_height="34dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            app:kswThumbHeight="20dp"
+            app:kswThumbWidth="23dp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/wifi_view"
+        android:layout_below="@+id/wx_view"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/wifi"
+            android:layout_width="114dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_centerVertical="true"
+            android:background="@color/gray"
+            android:gravity="center"
+            android:text="@string/wifiadb" />
+
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:layout_centerVertical="true"
+            android:id="@+id/switchBtn_wifi"
+            android:layout_width="93dp"
+            android:layout_height="34dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            app:kswThumbHeight="20dp"
+            app:kswThumbWidth="23dp" />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/sms_view"
+        android:layout_below="@+id/wifi_view"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/sms"
+            android:layout_width="114dp"
+            android:layout_height="31dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_centerVertical="true"
+            android:background="@color/gray"
+            android:gravity="center"
+            android:text="@string/sms" />
+
+        <TextView
+            android:id="@+id/sms_num"
+            android:gravity="center"
+            android:layout_below="@+id/sms"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:layout_centerVertical="true"
+            android:id="@+id/switchBtn_sms"
+            android:layout_width="93dp"
+            android:layout_height="34dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            app:kswThumbHeight="20dp"
+            app:kswThumbWidth="23dp" />
+
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/barcode"
+        android:layout_width="114dp"
+        android:layout_height="31dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="140dp"
+        android:background="@color/gray"
+        android:gravity="center"
+        android:text="生成条形码" />
+
+
 </RelativeLayout>

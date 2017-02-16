@@ -7,10 +7,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.os.Build;
+import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.Toast;
 
+import com.chen.androidtools.BuildConfig;
+import com.chen.androidtools.autoinstall.InstallationAccessibility;
+import com.chen.androidtools.autoinstall.SamsungAccessibility;
+import com.chen.androidtools.wechat.GrabMoneyAccessbilityJob;
 import com.chen.utils.LogUtils;
 
 import java.util.ArrayList;
@@ -28,13 +33,15 @@ public class BaseAccessibilityService extends AccessibilityService {
 
     //检测包名
     private String[] PACKAGES = {"com.tencent.mm", "com.qc.grabmoney",
-            "com.android.packageinstaller","com.lenovo.security",
-            "com.samsung.android.packageinstaller","com.miui.securitycenter"};
+            "com.android.packageinstaller", "com.lenovo.security",
+            "com.samsung.android.packageinstaller", "com.miui.securitycenter"};
     //回调处理不同的辅助功能类
     private static final Class[] ACCESSBILITY_JOBS = {
-//            GrabMoneyAccessbilityJob.class, InstallationAccessibility.class,
+            GrabMoneyAccessbilityJob.class,
+            InstallationAccessibility.class,
 //            LenovoPhoneAccessibility.class, AutoAttentWechatAccessbility.class,
-//            SamsungAccessibility.class, XiaomiAccessibility.class
+            SamsungAccessibility.class,
+// XiaomiAccessibility.class
     };
 
     private static BaseAccessibilityService service;
@@ -79,6 +86,7 @@ public class BaseAccessibilityService extends AccessibilityService {
 //        mKeyguardManager = (KeyguardManager) getSystemService(Context.KEYGUARD_SERVICE);
 
     }
+
     /**
      * 初始化所检测的包名
      */
@@ -104,14 +112,14 @@ public class BaseAccessibilityService extends AccessibilityService {
         //发送广播，已经连接上了
         Intent intent = new Intent(GrabMoneyConfig.ACTION_GRABMONEY_SERVICE_CONNECT);
         sendBroadcast(intent);
-        Toast.makeText(this, "已连接抢红包服务", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "已连接智能管家服务", Toast.LENGTH_SHORT).show();
 
     }
 
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        if (true) {
+        if (BuildConfig.DEBUG) {
             int eventType = event.getEventType();
             String eventText = "";
             LogUtils.i("==============Start====================");
@@ -173,11 +181,11 @@ public class BaseAccessibilityService extends AccessibilityService {
 
 
         String pkn = String.valueOf(event.getPackageName());
+
+        LogUtils.e("长度：" + mAccessbilityJobs.size());
         if (mAccessbilityJobs != null && !mAccessbilityJobs.isEmpty()) {
             for (AccessbilityJob job : mAccessbilityJobs) {
-
-//                Log.e(TAG, pkn);
-//                Log.e(TAG, job.getTargetPackageName() + "/" + job.isEnable());
+//                LogUtils.e("开始分发：" + job.isEnable() + "/" + pkn + "/" + job.getTargetPackageName());
 
                 if (pkn.equals(job.getTargetPackageName()) && job.isEnable()) {
                     job.onReceiveJob(event);
